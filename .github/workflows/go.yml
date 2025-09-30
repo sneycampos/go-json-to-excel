@@ -21,5 +21,5 @@ jobs:
       with:
         go-version: '1.25'
 
-    - name: Run
-      run: go run cmd/app/main.go
+    - name: Build
+      run: go build cmd/app/main.go
