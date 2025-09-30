@@ -1,7 +1,7 @@
 package main
 
 import (
-	"excelize/cmd/handlers"
+	"excelize/api"
 	"net/http"
 	"time"
 
@@ -23,8 +23,8 @@ func main() {
 		w.Write([]byte("Send a POST request to /excel with a JSON file to convert it to Excel. (multipart/form-data with key 'file')"))
 	})
 
-	r.Get("/dummy", handlers.DummyHandler)
-	r.Post("/excel", handlers.ExcelHandler)
+	r.Get("/dummy", api.DummyHandler)
+	r.Post("/excel", api.ExcelHandler)
 
 	err := http.ListenAndServe(":3000", r)
 	if err != nil {

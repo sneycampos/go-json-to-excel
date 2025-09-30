@@ -1,4 +1,4 @@
-package utils
+package internal
 
 import (
 	"net/http"
@@ -24,6 +24,14 @@ func UploadFile(w http.ResponseWriter, r *http.Request) (filepath string, err er
 	if err != nil {
 		http.Error(w, "Failed to get working directory", http.StatusInternalServerError)
 		return
+	}
+
+	// creates the temp dir if not exists
+	if _, err := os.Stat(workDir + "/temp"); os.IsNotExist(err) {
+		err := os.Mkdir(workDir+"/temp", os.ModePerm)
+		if err != nil {
+			http.Error(w, "Failed to create temp directory", http.StatusInternalServerError)
+		}
 	}
 
 	// upload the file to a temp location
