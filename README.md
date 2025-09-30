@@ -73,7 +73,7 @@ curl -X POST http://localhost:3000/excel \
 
 1. Build and run the server:
    ```sh
-   go run main.go
+   go run cmd/app/main.go
    ```
 2. Send a POST request as shown above.
 
